@@ -4,7 +4,7 @@ class Nameable
   end
 end
 
-class Person
+class Person < Nameable
   attr_accessor :name, :age
   attr_reader :id
 
@@ -19,6 +19,10 @@ class Person
     of_age? || @parent_permission
   end
 
+  def correct_name
+    @name
+  end
+  
   private
 
   def of_age?
