@@ -22,10 +22,21 @@ class Person < Nameable
   def correct_name
     @name
   end
-  
+
   private
 
   def of_age?
     @age >= 18
+  end
+end
+
+
+class Decorator < Nameable
+  def initialize(nameable)
+    @nameable = nameable
+  end
+
+  def correct_name
+    @nameable.correct_name
   end
 end
