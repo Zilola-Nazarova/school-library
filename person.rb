@@ -9,6 +9,7 @@ class Person < Nameable
   attr_reader :id
 
   def initialize(age, name = 'Unknown', parent_permission: true)
+    super()
     @parent_permission = parent_permission
     @id = Random.rand(1..1000)
     @name = name
@@ -30,9 +31,9 @@ class Person < Nameable
   end
 end
 
-
 class Decorator < Nameable
   def initialize(nameable)
+    super()
     @nameable = nameable
   end
 
