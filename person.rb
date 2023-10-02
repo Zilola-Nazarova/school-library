@@ -1,3 +1,9 @@
+class Nameable
+  def correct_name
+    raise NotImplementedError
+  end
+end
+
 class Person
   attr_accessor :name, :age
   attr_reader :id
