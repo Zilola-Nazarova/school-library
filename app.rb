@@ -16,6 +16,10 @@ class App
     @books.each { |book| puts "Title: \"#{book.title}\", Author: #{book.author}" }
   end
 
+  def list_books_with_index
+    @books.each_with_index { |book, i| puts "#{i}) Title: \"#{book.title}\", Author: #{book.author}" }
+  end
+
   def run
     prompt
   end
