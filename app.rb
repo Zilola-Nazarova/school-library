@@ -20,6 +20,12 @@ class App
     @books.each_with_index { |book, i| puts "#{i}) Title: \"#{book.title}\", Author: #{book.author}" }
   end
 
+  def list_people
+    @people.each do |person|
+      puts "[#{person.class.name}] Name: \"#{person.name}\", ID: #{person.id}, Age: #{person.age}"
+    end
+  end
+
   def run
     prompt
   end
