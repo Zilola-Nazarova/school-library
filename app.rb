@@ -93,6 +93,31 @@ class App
     puts 'Book created successfully'
   end
 
+  def create_rental
+    puts 'Select a book from the following list by number'
+    list_books_with_index
+    book_index = gets.chomp.to_i
+    unless (0...@books.length).include?(book_index)
+      puts "Book #{book_index} doesn't exist"
+      return
+    end
+    book = @books[book_index]
+
+    puts "\nSelect a person from the following list by number (not id)"
+    list_people_with_index
+    person_index = gets.chomp.to_i
+    unless (0...@people.length).include?(person_index)
+      puts "Person #{person_index} doesn't exist"
+      return
+    end
+    person = @people[person_index]
+
+    print 'Date: '
+    date = gets.chomp.to_s
+    @rentals.push(Rental.new(date, book, person))
+    puts 'Rental created successfully'
+  end
+
   def run
     prompt
   end
