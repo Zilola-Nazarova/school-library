@@ -13,6 +13,7 @@ def prompt
     show_options
     option = gets.chomp.to_i
     break if option == 7
+
     call_option(option)
   end
 end
@@ -32,7 +33,7 @@ def call_option(option)
   when 6
     list_rentals
   else
-    puts "Choose a number between 1 and 7"
+    puts 'Choose a number between 1 and 7'
   end
 end
 

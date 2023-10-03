@@ -11,7 +11,7 @@ class App
     @rentals = []
     @people = []
   end
-  
+
   def list_books
     @books.each { |book| puts "Title: \"#{book.title}\", Author: #{book.author}" }
   end
@@ -98,20 +98,18 @@ class App
     list_books_with_index
     book_index = gets.chomp.to_i
     unless (0...@books.length).include?(book_index)
-      puts "Book #{book_index} doesn't exist"
+      puts "Can not add a record. Book #{book_index} doesn't exist"
       return
     end
     book = @books[book_index]
-
     puts "\nSelect a person from the following list by number (not id)"
     list_people_with_index
     person_index = gets.chomp.to_i
     unless (0...@people.length).include?(person_index)
-      puts "Person #{person_index} doesn't exist"
+      puts "Can not add a record. Person #{person_index} doesn't exist"
       return
     end
     person = @people[person_index]
-
     print 'Date: '
     date = gets.chomp.to_s
     @rentals.push(Rental.new(date, book, person))
@@ -122,13 +120,14 @@ class App
     print 'ID of person: '
     id = gets.chomp.to_i
     selected = @rentals.find_all { |rental| rental.person.id == id }
-    if selected == nil
+    if selected.nil?
       puts "Person with id=#{id} doesn't exist"
+      return
     end
     puts 'Rentals:'
     selected.map { |rental| puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}" }
   end
-  
+
   def run
     prompt
   end
