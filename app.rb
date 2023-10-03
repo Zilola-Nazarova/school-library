@@ -26,6 +26,12 @@ class App
     end
   end
 
+  def list_people_with_index
+    @people.each_with_index do |person, i|
+      puts "#{i}) [#{person.class.name}] Name: \"#{person.name}\", ID: #{person.id}, Age: #{person.age}"
+    end
+  end
+
   def run
     prompt
   end
