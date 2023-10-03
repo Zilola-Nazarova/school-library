@@ -118,6 +118,17 @@ class App
     puts 'Rental created successfully'
   end
 
+  def list_rentals
+    print 'ID of person: '
+    id = gets.chomp.to_i
+    selected = @rentals.find_all { |rental| rental.person.id == id }
+    if selected == nil
+      puts "Person with id=#{id} doesn't exist"
+    end
+    puts 'Rentals:'
+    selected.map { |rental| puts "Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}" }
+  end
+  
   def run
     prompt
   end
