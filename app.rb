@@ -32,6 +32,18 @@ class App
     end
   end
 
+  def create_person
+    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
+    student_or_teacher = gets.chomp.to_i
+    if student_or_teacher == 1
+      create_student
+    elsif student_or_teacher == 2
+      create_teacher
+    else
+      puts "Error: option has an invalid value (#{student_or_teacher})"
+    end
+  end
+
   def run
     prompt
   end
