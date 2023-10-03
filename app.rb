@@ -44,6 +44,44 @@ class App
     end
   end
 
+  def create_student
+    print 'Age: '
+    age = gets.chomp.to_i
+
+    print 'Name: '
+    name = gets.chomp.to_s
+
+    print 'Has parent permission? [Y/N]: '
+    parent_permission = gets.chomp.to_s
+
+    if parent_permission =~ /^[Yy]/
+      student = Student.new('Unknown', age, name, parent_permission: true)
+    elsif parent_permission =~ /^[Nn]/
+      student = Student.new('Unknown', age, name, parent_permission: false)
+    else
+      puts "Error: option has an invalid value (#{parent_permission})"
+      return
+    end
+
+    @people.push(student)
+    puts 'Person created successfully'
+  end
+
+  def create_teacher
+    print 'Age: '
+    age = gets.chomp.to_i
+
+    print 'Name: '
+    name = gets.chomp.to_s
+
+    print 'Specialization: '
+    specialization = gets.chomp.to_s
+
+    teacher = Teacher.new(specialization, age, name)
+    @people.push(teacher)
+    puts 'Person created successfully'
+  end
+
   def run
     prompt
   end
