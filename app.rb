@@ -82,6 +82,17 @@ class App
     puts 'Person created successfully'
   end
 
+  def create_book
+    print 'Title: '
+    title = gets.chomp.to_s
+
+    print 'Author: '
+    author = gets.chomp.to_s
+
+    @books.push(Book.new(title, author))
+    puts 'Book created successfully'
+  end
+
   def run
     prompt
   end
