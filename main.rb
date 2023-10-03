@@ -7,6 +7,16 @@ def show_options
 6 - List all rentals for a given person id\n7 - Exit"
 end
 
+def prompt
+  puts 'Welcome to School Library App!'
+  loop do
+    show_options
+    option = gets.chomp.to_i
+    break if option == 7
+    call_option(option)
+  end
+end
+
 def main
   app = App.new
   app.run
