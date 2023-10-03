@@ -41,5 +41,5 @@ def main
   app = App.new
   app.run
 end
-
+## call the method
 main
