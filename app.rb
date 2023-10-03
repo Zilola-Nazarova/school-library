@@ -2,7 +2,6 @@ require './student'
 require './teacher'
 require './book'
 require './rental'
-# require './main'
 
 class App
   attr_accessor :books, :people, :rentals
@@ -11,6 +10,10 @@ class App
     @books = []
     @rentals = []
     @people = []
+  end
+  
+  def list_books
+    @books.each { |book| puts "Title: \"#{book.title}\", Author: #{book.author}" }
   end
 
   def run
