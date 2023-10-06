@@ -2,6 +2,7 @@ require './student'
 require './teacher'
 require './book'
 require './rental'
+require 'pry'
 
 class App
   attr_accessor :books, :people, :rentals
@@ -41,29 +42,31 @@ class App
       create_teacher
     else
       puts "Error: option has an invalid value (#{student_or_teacher})"
+      create_person
     end
   end
 
   def create_student
     print 'Age: '
     age = gets.chomp.to_i
-
     print 'Name: '
     name = gets.chomp.to_s
 
-    print 'Has parent permission? [Y/N]: '
-    parent_permission = gets.chomp.to_s
-
-    if parent_permission =~ /^[Yy]/
-      student = Student.new('Unknown', age, name, parent_permission: true)
-    elsif parent_permission =~ /^[Nn]/
-      student = Student.new('Unknown', age, name, parent_permission: false)
-    else
-      puts "Error: option has an invalid value (#{parent_permission})"
-      return
+    loop do
+      print 'Has parent permission? [Y/N]: '
+      parent_permission = gets.chomp.to_s
+      if parent_permission =~ /^[Yy]/
+        @student = Student.new('Unknown', age, name, parent_permission: true)
+        break
+      elsif parent_permission =~ /^[Nn]/
+        @student = Student.new('Unknown', age, name, parent_permission: false)
+        break
+      else
+        puts "Error: option has an invalid value (#{parent_permission})"
+      end
     end
 
-    @people.push(student)
+    @people.push(@student)
     puts 'Person created successfully'
   end
 
@@ -85,35 +88,47 @@ class App
   def create_book
     print 'Title: '
     title = gets.chomp.to_s
-
     print 'Author: '
     author = gets.chomp.to_s
-
     @books.push(Book.new(title, author))
     puts 'Book created successfully'
   end
 
   def create_rental
-    puts 'Select a book from the following list by number'
-    list_books_with_index
-    book_index = gets.chomp.to_i
-    unless (0...@books.length).include?(book_index)
-      puts "Can not add a record. Book #{book_index} doesn't exist"
-      return
-    end
-    book = @books[book_index]
-    puts "\nSelect a person from the following list by number (not id)"
-    list_people_with_index
-    person_index = gets.chomp.to_i
-    unless (0...@people.length).include?(person_index)
-      puts "Can not add a record. Person #{person_index} doesn't exist"
-      return
-    end
-    person = @people[person_index]
+    choose_book
+    choose_person
     print 'Date: '
     date = gets.chomp.to_s
-    @rentals.push(Rental.new(date, book, person))
+    @rentals.push(Rental.new(date, @selected_book, @selected_person))
     puts 'Rental created successfully'
+  end
+
+  def choose_book
+    loop do
+      puts "\nSelect a book from the following list by number"
+      list_books_with_index
+      book_index = gets.chomp
+      book_index = book_index.to_i if book_index != ''
+      if (0...@books.length).include?(book_index)
+        @selected_book = @books[book_index]
+        break
+      end
+      puts "Can not add a record. Book \"#{book_index}\" doesn't exist"
+    end
+  end
+
+  def choose_person
+    loop do
+      puts "\nSelect a person from the following list by number (not id)"
+      list_people_with_index
+      person_index = gets.chomp
+      person_index = person_index.to_i if person_index != ''
+      if (0...@people.length).include?(person_index)
+        @selected_person = @people[person_index]
+        break
+      end
+      puts "Can not add a record. Person \"#{person_index}\" doesn't exist"
+    end
   end
 
   def list_rentals
