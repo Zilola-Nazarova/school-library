@@ -107,8 +107,7 @@ class App
     loop do
       puts "\nSelect a book from the following list by number"
       list_books_with_index
-      book_index = gets.chomp
-      book_index = book_index.to_i if book_index != ''
+      book_index = gets.chomp.to_i
       if (0...@books.length).include?(book_index)
         @selected_book = @books[book_index]
         break
@@ -121,8 +120,7 @@ class App
     loop do
       puts "\nSelect a person from the following list by number (not id)"
       list_people_with_index
-      person_index = gets.chomp
-      person_index = person_index.to_i if person_index != ''
+      person_index = gets.chomp.to_i
       if (0...@people.length).include?(person_index)
         @selected_person = @people[person_index]
         break
