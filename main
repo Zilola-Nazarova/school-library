@@ -12,7 +12,7 @@ def prompt
   puts 'Welcome to School Library App!'
   loop do
     show_options
-    option = gets.chomp.to_i
+    option = gets.chomp
     break if option == 7
 
     call_option(option)
