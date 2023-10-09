@@ -102,11 +102,17 @@ You can also check linter errors by running these commands:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 Zilola Nazarova
+👤 **Zilola Nazarova**
 
 - GitHub: [@Zilola-Nazarova](https://github.com/Zilola-Nazarova)
 - Twitter: [@NazarovaZi](https://twitter.com/NazarovaZi)
 - LinkedIn: [in/NazarovaZi](https://www.linkedin.com/in/zilola-nazarova)
+
+👤 **Suleiman Gacheru**
+
+- GitHub: [@hetrox8](https://github.com/hetrox8)
+- Twitter: [@suleimangacheru](https://twitter.com/suleimangacheru)
+- LinkedIn: [in/suleiman-yusuf-gacheru](https://www.linkedin.com/in/suleiman-yusuf-gacheru/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
