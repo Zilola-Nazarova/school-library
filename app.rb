@@ -1,15 +1,21 @@
 require './creators'
 require './listers'
+require './json_save.rb'
+require './json_load.rb'
 
 class App
+  include Save
+  include Load
   include Creators
   include Listers
+
   attr_accessor :books, :people, :rentals
 
   def initialize
     @books = []
     @rentals = []
     @people = []
+    load_files
   end
 
   def call_option(option)
@@ -26,6 +32,9 @@ class App
       create_rental
     when 6
       list_rentals
+    when 7
+      save_files
+      puts "\nThank you for using our app!"
     else
       puts 'Choose a number between 1 and 7'
     end

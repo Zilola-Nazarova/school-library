@@ -10,10 +10,9 @@ def main
   loop do
     show_options
     option = gets.chomp.to_i
-    break if option == 7
     app.call_option(option)
+    break if option == 7
   end
-  puts "\nThank you for using our app!"
 end
 
 main
