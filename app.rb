@@ -9,6 +9,15 @@ class App
   include Creators
   include Listers
 
+  OPTIONS_HASH = {
+    1 => :list_books,
+    2 => :list_people,
+    3 => :create_person,
+    4 => :reate_book,
+    5 => :create_rental,
+    6 => :list_rentals
+  }.freeze
+
   attr_accessor :books, :people, :rentals
 
   def initialize
@@ -19,22 +28,11 @@ class App
   end
 
   def call_option(option)
-    case option
-    when 1
-      list_books
-    when 2
-      list_people
-    when 3
-      create_person
-    when 4
-      create_book
-    when 5
-      create_rental
-    when 6
-      list_rentals
-    when 7
+    if option == 7
       save_files
-      puts "Thank you for using our app!"    
+      puts 'Thank you for using our app!'
+    else
+      method(OPTIONS_HASH[option]).call
     end
   end
 end
