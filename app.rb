@@ -1,7 +1,7 @@
 require './creators'
 require './listers'
-require './json_save.rb'
-require './json_load.rb'
+require './json_save'
+require './json_load'
 
 class App
   include Save
@@ -34,9 +34,7 @@ class App
       list_rentals
     when 7
       save_files
-      puts "\nThank you for using our app!"
-    else
-      puts 'Choose a number between 1 and 7'
+      puts "Thank you for using our app!"    
     end
   end
 end
