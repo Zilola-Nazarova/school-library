@@ -7,11 +7,16 @@ end
 def main
   app = App.new
   puts 'Welcome to School Library App!'
+  show_options
   loop do
-    show_options
     option = gets.chomp.to_i
-    app.call_option(option)
-    break if option == 7
+    if (1..7).include?(option)
+      app.call_option(option)
+      break if option == 7
+      show_options
+    else
+      puts 'Choose a number between 1 and 7'
+    end
   end
 end
 
