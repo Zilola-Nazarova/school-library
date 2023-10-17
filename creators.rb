@@ -39,10 +39,10 @@ module Creators
       print 'Has parent permission? [Y/N]: '
       parent_permission = gets.chomp.to_s
       if parent_permission =~ /^[Yy]/
-        @student = Student.new('Unknown', age, name, parent_permission: true)
+        @student = Student.new(Classroom.new('Unknown'), age, name, parent_permission: true)
         break
       elsif parent_permission =~ /^[Nn]/
-        @student = Student.new('Unknown', age, name, parent_permission: false)
+        @student = Student.new(Classroom.new('Unknown'), age, name, parent_permission: false)
         break
       else
         puts "Error: option has an invalid value (#{parent_permission})"
